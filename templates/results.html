@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %} Predictions {% endblock %}
+
+{% block content %}
+
+<h2> Predictions </h2>
+
+<br> <br> <br>
+
+{% if predictions %}
+    {% for prediction in predictions %}
+        <ul class="list-group">
+          <li class="list-group-item">{{prediction}}</li>
+        </ul>
+    {% endfor %}
+{% endif %}
+{% endblock %}
