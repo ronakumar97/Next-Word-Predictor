@@ -1,10 +1,36 @@
 {% extends "base.html" %}
+
 {% block content %}
-
-{% if message  %}
-    <div class="alert alert-secondary" role="alert">
-        <p>{{ message }}</p>
+<form action="/predict" method="POST">
+    <div class="form-group">
+        <label for="PredictWord"></label>
+        <input name="sentence" class="form-control" id="PredictWord" placeholder="Predict the next word...">
     </div>
-{% endif %}
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+      <label class="form-check-label" for="exampleRadios1">
+        N-Grams
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+      <label class="form-check-label" for="exampleRadios2">
+        BERT
+      </label>
+    </div>
 
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+      <label class="form-check-label" for="exampleRadios3">
+        Skip Predictions
+      </label>
+    </div>
+
+
+    <div class="row">
+        <div class="col text-center">
+            <button type="submit" class="btn btn-lg btn-success">Submit</button>
+        </div>
+    </div>
+</form>
 {% endblock %}

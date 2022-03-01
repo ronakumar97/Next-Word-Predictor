@@ -32,34 +32,22 @@
     <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
 
 </head>
+
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-success justify-content-end">
+  <a class="navbar-brand" href="/">Home</a>
+    <a class="navbar-brand" href="/accuracy">Accuracy</a>
+</nav>
+
 <div class="container">
     <h1 class="display-1 text-center">Next Word Predictor</h1>
-    <form action="/predict" method="POST">
-        <div class="form-group">
-            <label for="PredictWord"></label>
-            <input name="sentence" class="form-control" id="PredictWord" placeholder="Predict the next word...">
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-          <label class="form-check-label" for="exampleRadios1">
-            N-Grams
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-          <label class="form-check-label" for="exampleRadios2">
-            BERT
-          </label>
-        </div>
+    {% if message  %}
+    <div class="alert alert-secondary" role="alert">
+        <p>{{ message }}</p>
+    </div>
+    {% endif %}
+    {% block content %}
 
-        <div class="row">
-            <div class="col text-center">
-                <button type="submit" class="btn btn-lg btn-success">Submit</button>
-            </div>
-        </div>
-    </form>
-    {% block content %}{% endblock %}
+    {% endblock %}
 </div>
 </body>
-</html>

@@ -7,7 +7,7 @@ def bert(sentence):
     sentence = sentence + " [MASK]."
     return predict_masked_sent(sentence, model, tokenizer)
 
-def predict_masked_sent(sentence, model, tokenizer, top_k=5):
+def predict_masked_sent(sentence, model, tokenizer, top_k=3):
     text = "[CLS] %s [SEP]" % sentence
     tokenized_text = tokenizer.tokenize(text)
     masked_index = tokenized_text.index("[MASK]")
