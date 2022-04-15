@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from ngrams import n_grams
 from bert import bert
+from lstm import lstm
 
 import pymongo
 
@@ -20,11 +21,15 @@ def index():
         sentence = request.form.get('sentence')
         checked_boxes = request.form.getlist('exampleRadios')
         if(checked_boxes[0] == 'option1'):
-            predictions = n_grams(sentence)
+            predictions = n_grams(sentence) # how are you doing ?
             store_db(sentence, predictions)
             return render_template('results.html', predictions=predictions)
         elif(checked_boxes[0] == 'option2'):
             predictions = bert(sentence)
+            store_db(sentence, predictions)
+            return render_template('results.html', predictions=predictions)
+        elif(checked_boxes[0] == 'option3'):
+            predictions = lstm(sentence)
             store_db(sentence, predictions)
             return render_template('results.html', predictions=predictions)
         else:
