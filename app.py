@@ -5,7 +5,8 @@ from lstm import lstm
 
 import pymongo
 
-client = pymongo.MongoClient()
+client = pymongo.MongoClient("mongodb+srv://capstone:capstone123@cluster0.eyk8n.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+
 db = client.get_database('next_word_project')
 
 app = Flask(__name__)
