@@ -21,7 +21,7 @@ def index():
         sentence = request.form.get('sentence')
         checked_boxes = request.form.getlist('exampleRadios')
         if(checked_boxes[0] == 'option1'):
-            predictions = n_grams(sentence) # how are you doing ?
+            predictions = n_grams(sentence)
             store_db(sentence, predictions)
             return render_template('results.html', predictions=predictions)
         elif(checked_boxes[0] == 'option2'):
